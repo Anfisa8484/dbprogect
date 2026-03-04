@@ -1,6 +1,6 @@
 const from = document.getElementById("userFrom");
 const out = document.getElementById("out");
-
+//A102PCPREPOD\A102PCPREPOD
 
 from.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -9,7 +9,7 @@ from.addEventListener("submit", async (e) => {
         name: fd.get("name"),
         lastname: fd.get("lasname"),
         bithday: String(fd.get("bithday")),
-        group_id: Number(fd.get("group_i")),
+        group_id: Number(fd.get("group_id")),
     };
 
     const r = await fetch("http://localhost:5000/api/users", {
