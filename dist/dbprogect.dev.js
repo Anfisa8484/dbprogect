@@ -18,7 +18,7 @@ from.addEventListener("submit", function _callee(e) {
             group_id: Number(fd.get("group_id"))
           };
           _context.next = 5;
-          return regeneratorRuntime.awrap(fetch("http://localhost:5000/api/users", {
+          return regeneratorRuntime.awrap(fetch("/students", {
             matod: "POST",
             headers: {
               "Content-Type": "application/json"

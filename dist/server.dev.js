@@ -1,17 +1,14 @@
 "use strict";
 
-var express = require("exsperess");
+var express = require("express");
 
 var sql = require('mssql');
 
-var _require = require("node:sqlite"),
-    DatabaseSync = _require.DatabaseSync;
-
-var _require2 = require("tedious"),
-    ConnectionError = _require2.ConnectionError;
-
+var POST = 3000;
 var app = express();
-add.use(express.json());
+app.use(express.json()); // const { DatabaseSync } = require("node:sqlite");
+// const { ConnectionError } = require("tedious");
+
 var dbConfig = {
   server: "A102PCPREPOD\A102PCPREPOD",
   database: "Anfisa tb",
@@ -46,7 +43,7 @@ app.get('/students', function _callee(req, res) {
     }
   });
 });
-add.post("/students", function _callee2(req, res) {
+app.post("/students", function _callee2(req, res) {
   var _req$body, name, lasname, bithday, group_id, connection;
 
   return regeneratorRuntime.async(function _callee2$(_context2) {

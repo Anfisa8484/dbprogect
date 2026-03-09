@@ -12,10 +12,11 @@ from.addEventListener("submit", async (e) => {
         group_id: Number(fd.get("group_id")),
     };
 
-    const r = await fetch("http://localhost:5000/api/users", {
+    const r = await fetch("/students", {
         matod: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(paytload),
     });
-    out.textContent =`HTTP ${r.status}\n${await r. text()}`;  
+    out.textContent =`HTTP ${r.status}\n${await r. text()}`; 
+ 
 });

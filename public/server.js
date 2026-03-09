@@ -1,20 +1,32 @@
-const express = require("exsperess");
-const sql = require('mssql');
-const { DatabaseSync } = require("node:sqlite");
-const { ConnectionError } = require("tedious");
+const express = require("express");
+const sql = require("mssql/msnodesqlv8");
+const path = require("path");
 
+const POST = 3000;
 const app = express();
-add.use(express.json());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+
+// const { DatabaseSync } = require("node:sqlite");
+// const { ConnectionError } = require("tedious");
 
 const dbConfig = {
-    server: "A102PCPREPOD\A102PCPREPOD",
-    database: "Anfisa tb",
-    driver: "msnodesqlv8",
-    options:{
-        trustedConnection: true,
-        trustServerCertificate: true,
-    },
-};
+    connectionString:
+      "Driver={SQL Server};Server=A102PCPREPOD\\A102PCPREPOD;Database=Anfisa tb;Trusted_Connection=Yes;",
+    driver: "msnodesqlv8"
+  };
+
+
+// const dbConfig = {
+//     server: "A102PCPREPOD\A102PCPREPOD",
+//     database: "Anfisa tb",
+//     driver: "msnodesqlv8",
+//     options:{
+//         trustedConnection: true,
+//         trustServerCertificate: true,
+//     },
+// };
 
 app.get('/students', async(req, res)=>{
     const connection = await sql.connect(dbConfig);
@@ -24,7 +36,7 @@ app.get('/students', async(req, res)=>{
     res.json(result.recordset);
 });
 
-add.post("/students", async(req, res) => {
+app.post("/students", async(req, res) => {
     const {name, lasname, bithday, group_id} = req.body;
     const connection = await sql.connect(dbConfig);
 
